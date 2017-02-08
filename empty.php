@@ -1,3 +1,4 @@
+<?php require('connetc.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
