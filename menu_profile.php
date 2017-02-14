@@ -4,6 +4,6 @@
               </div>
               <div class="profile_info">
                 <span>Dobrodošao,</span>
-                <h2>Weeaboo Šubert</h2>
+                <h2>Albert Einstein</h2>
               </div>
             </div>

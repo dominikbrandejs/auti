@@ -11,7 +11,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-car"></i> <span>Automobili!</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -60,7 +60,35 @@
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-                  <div class="x_content"></div>
+                  <div class="x_content">
+                    <h1>Proizvođači</h1>
+
+                    <?php
+                        $sql = "SELECT id, name, year_est FROM brands;";
+                        $result = $mysqli->query($sql);
+                    ?>
+
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Name</th>
+                          <th>Year established</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+<?php
+    while ($brand = $result->fetch_assoc()) {
+        echo('<tr>');
+        echo('<th scope="row">' . $brand['id'] . '</th>');
+        echo('<td>' . $brand['name'] . '</td>');
+        echo('<td>' . $brand['year_est'] . '</td>');
+        echo('</tr>');
+    }
+?>                        
+                      </tbody>
+                    </table>                    
+                  </div>
                 </div>
               </div>
             </div>
