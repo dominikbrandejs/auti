@@ -41,7 +41,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Form Validation</h3>
+                <h3>Proizvođači</h3>
               </div>
 
               <div class="title_right">
@@ -63,15 +63,12 @@
                   <div class="x_content">
                     <h1>Izmjena</h1>
 
-                    <?php 
-                    $sql = "SELECT name, year_est FROM brands WHERE id=" . $_GET['id'];
+                    <?php
+                    $sql = "SELECT id, name, year_est FROM brands WHERE id=" . $_GET['id'];
                     $result = $mysqli->query($sql);
-                    $brand = $mysqli->fetch_assoc();
-
-                    echo($brand['name']);
-
+                    $brand = $result->fetch_assoc();
                     ?>
-
+                    
                     <form action="brands_update.php" method="post" class="form-horizontal form-label-left">
                         <input type="hidden" name="id" value="<?php echo($brand['id']); ?>">
                         <div class="form-group">
