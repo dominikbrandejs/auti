@@ -61,37 +61,39 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                    <h1>Proizvođači</h1>
+                    <h1>Izmjena</h1>
 
-                    <?php
-                        $sql = "SELECT id, name, year_est FROM brands ORDER BY name;";
-                        $result = $mysqli->query($sql);
+                    <?php 
+                    $sql = "SELECT name, year_est FROM brands WHERE id=" . $_GET['id'];
+                    $result = $mysqli->query($sql);
+                    $brand = $mysqli->fetch_assoc();
+
+                    echo($brand['name']);
+
                     ?>
 
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>Name</th>
-                          <th>Year established</th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-<?php
-    while ($brand = $result->fetch_assoc()) {
-        echo('<tr>');
-        echo('<th scope="row">' . $brand['id'] . '</th>');
-        echo('<td>' . $brand['name'] . '</td>');
-        echo('<td>' . $brand['year_est'] . '</td>');
-        echo('<td><a href="brands_edit.php?id=' . $brand['id'] . '"><i class="fa  fa-pencil" aria-hidden="true"></i></a><td>');
-        echo('<td><a href="brands_delete.php?id=' . $brand['id'] . '"><i class="fa  fa-trash" aria-hidden="true"></i></a><td>');
-        echo('</tr>');
-    }
-?>                        
-                      </tbody>
-                    </table>                    
+                    <form action="brands_update.php" method="post" class="form-horizontal form-label-left">
+                        <input type="hidden" name="id" value="<?php echo($brand['id']); ?>">
+                        <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Ime proizvođača:</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="name" name="name" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo($brand['name']); ?>">
+                          </div>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="year_est">Datum osnutka:</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="year_est" name="year_est" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo($brand['year_est']); ?>">
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <input type="submit" value="Unesi" class="btn btn-success">
+                          </div>
+                        </div>
+                    </form>
                   </div>
                 </div>
               </div>
