@@ -41,7 +41,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Form Validation</h3>
+                <h3>Proizvođači</h3>
               </div>
 
               <div class="title_right">
@@ -61,40 +61,43 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                    <h1>Proizvođači</h1>
+                    <h1>Izmjena</h1>
 
                     <?php
-                        $sql = "SELECT id, model, color, mileage FROM cars ORDER BY model;";
-                        $result = $mysqli->query($sql);
-
+                    $sql = "SELECT id, model, color, mileage FROM cars WHERE id=" . $_GET['id'];
+                    $result = $mysqli->query($sql);
+                    $cars = $result->fetch_assoc();
                     ?>
+                    
+                    <form action="cars_update.php" method="post" class="form-horizontal form-label-left">
+                        <input type="hidden" name="id" value="<?php echo($cars['id']); ?>">
+                        <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="model">Model:</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="model" name="model" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo($cars['model']); ?>">
+                          </div>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="color">Boja:</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="color" name="color" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo($cars['color']); ?>">
+                          </div>
+                        </div>
 
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>Model</th>
-                          <th>Boja</th>
-                          <th>Kilometraža</th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-<?php
-    while ($cars = $result->fetch_assoc()) {
-        echo('<tr>');
-        echo('<th scope="row">' . $cars['id'] . '</th>');
-        echo('<td>' . $cars['model'] . '</td>');
-        echo('<td>' . $cars['color'] . '</td>');
-        echo('<td>' . $cars['mileage'] . '</td>');
-        echo('<td><a href="cars_edit.php?id=' . $cars['id'] . '"><i class="fa  fa-pencil" aria-hidden="true"></i></a><td>');
-        echo('<td><a href="cars_delete.php?id=' . $cars['id'] . '"><i class="fa  fa-trash" aria-hidden="true"></i></a><td>');
-        echo('</tr>');
-    }
-?>                        
-                      </tbody>
-                    </table>                    
+                        <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mileage">Miljaža:</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="" id="mileage" name="mileage" required="required" class="form-control col-md-7 col-xs-12" value="<?php echo($cars['mileage']); ?>">
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <input type="submit" value="Unesi" class="btn btn-success">
+                          </div>
+                        </div>
+                    </form>
                   </div>
                 </div>
               </div>

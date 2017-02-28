@@ -61,40 +61,36 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_content">
-                    <h1>Proizvođači</h1>
+                    <h1>Unos proizvođača</h1>
 
-                    <?php
-                        $sql = "SELECT id, model, color, mileage FROM cars ORDER BY model;";
-                        $result = $mysqli->query($sql);
+                    <form action="cars_create.php" method="post" class="form-horizontal form-label-left">
+                        <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="model">Model:</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="model" name="model" required="required" class="form-control col-md-7 col-xs-12">
+                          </div>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="color">Boja:</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="color" name="color" required="required" class="form-control col-md-7 col-xs-12">
+                          </div>
+                        </div>
 
-                    ?>
+                        <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mileage">Miljaža:</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="mileage" name="mileage" required="required" class="form-control col-md-7 col-xs-12">
+                          </div>
+                        </div>
 
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>Model</th>
-                          <th>Boja</th>
-                          <th>Kilometraža</th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-<?php
-    while ($cars = $result->fetch_assoc()) {
-        echo('<tr>');
-        echo('<th scope="row">' . $cars['id'] . '</th>');
-        echo('<td>' . $cars['model'] . '</td>');
-        echo('<td>' . $cars['color'] . '</td>');
-        echo('<td>' . $cars['mileage'] . '</td>');
-        echo('<td><a href="cars_edit.php?id=' . $cars['id'] . '"><i class="fa  fa-pencil" aria-hidden="true"></i></a><td>');
-        echo('<td><a href="cars_delete.php?id=' . $cars['id'] . '"><i class="fa  fa-trash" aria-hidden="true"></i></a><td>');
-        echo('</tr>');
-    }
-?>                        
-                      </tbody>
-                    </table>                    
+                        <div class="form-group">
+                          <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <input type="submit" value="Unesi" class="btn btn-success">
+                          </div>
+                        </div>
+                    </form>
                   </div>
                 </div>
               </div>
