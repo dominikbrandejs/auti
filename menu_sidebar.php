@@ -8,6 +8,12 @@
           <li><a href="brands_new.php">Unos</a></li>
         </ul>
       </li>
+      <li><a><i class="fa fa-id-card"></i> Auti <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="brands.php">Prikaz</a></li>
+          <li><a href="brands_new.php">Unos</a></li>
+        </ul>
+      </li>
       <li><a><i class="fa fa-edit"></i> Forme <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="form.html">General Form</a></li>
