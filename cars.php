@@ -64,7 +64,7 @@
                     <h1>Proizvođači</h1>
 
                     <?php
-                        $sql = "SELECT id, model, color, mileage FROM cars ORDER BY model;";
+                        $sql = "SELECT brands.name, cars.id, cars.model, cars.color, cars.mileage FROM brands, cars  WHERE brands.id = cars.brand_id;";
                         $result = $mysqli->query($sql);
 
                     ?>
@@ -73,6 +73,7 @@
                       <thead>
                         <tr>
                           <th>#</th>
+                          <th>Brands</th>
                           <th>Model</th>
                           <th>Boja</th>
                           <th>Kilometraža</th>
@@ -85,6 +86,7 @@
     while ($cars = $result->fetch_assoc()) {
         echo('<tr>');
         echo('<th scope="row">' . $cars['id'] . '</th>');
+        echo('<td>' . $cars['name'] . '</td>');
         echo('<td>' . $cars['model'] . '</td>');
         echo('<td>' . $cars['color'] . '</td>');
         echo('<td>' . $cars['mileage'] . '</td>');
