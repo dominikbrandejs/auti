@@ -62,8 +62,28 @@
                 <div class="x_panel">
                   <div class="x_content">
                     <h1>Unos proizvođača</h1>
+                    <?php
+                        $sql = "SELECT name FROM brands ORDER BY name";
+                        $result = $mysqli->query($sql);
+
+                    ?>
 
                     <form action="cars_create.php" method="post" class="form-horizontal form-label-left">
+                        <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="model">Proizvođač:</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input list="brand" id="brand1" name="brand1" required="required" class="form-control col-md-7 col-xs-12">
+                            <datalist id="brand">
+                            
+                            <?php
+                              while ($cars = $result->fetch_assoc()) {
+                              echo('<option value=' . '"' . $cars['name'] . '"' . '>');
+                              }
+                              ?>
+                            </datalist>
+
+                          </div>
+                        </div>
                         <div class="form-group">
                           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="model">Model:</label>
                           <div class="col-md-6 col-sm-6 col-xs-12">

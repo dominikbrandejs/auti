@@ -20,7 +20,7 @@
             <?php require('menu_profile.php'); ?>
             <!-- /menu profile quick info -->
 
-            <br />
+            <br/>
 
             <!-- sidebar menu -->
             <?php require('menu_sidebar.php'); ?>
